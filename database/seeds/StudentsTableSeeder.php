@@ -10,7 +10,9 @@ class StudentsTableSeeder extends Seeder
      * @return void
      */
     public function run()
-	{
-			factory (App\Student::class,100)->create ();
+    {
+        factory(App\Student::class, 50)->create()->each(function ($s) {
+            $s->prepays()->save(factory(App\Prepay::class)->make());
+        });
     }
 }
