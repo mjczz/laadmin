@@ -81,10 +81,15 @@ class StudentController extends Controller
     {
         $grid = new Grid(new Student);
 
-		$grid->column('id')->sortable();
+
+        $grid->column('id')->sortable();
+        $grid->student_name('Student name');
         $grid->student_code('Student code');
         $grid->student_login('Student login');
-        $grid->student_name('Student name');
+        $grid->prepays('订单数')->display(function ($prepays) {
+            $count = count($prepays);
+            return $count;
+        });
         $grid->letter('Letter');
         $grid->avatar('Avatar');
 		$grid->gender()->using(['2' => '女', '1' => '男','0' => '未知']);
