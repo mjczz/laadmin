@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prepay extends Model
 {
-    public function student(){
+    protected $table = 'prepays';
+
+    public function student()
+    {
         return $this->belongsTo(Student::class,'student_id','id');
     }
+
 }
